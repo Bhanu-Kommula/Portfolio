@@ -1,59 +1,52 @@
 body {
-    background: linear-gradient(to left, #c5daff 0%, #e0e0e0 100%); /* Right-to-left gradient: blue on the left, gray on the right */
+    background: linear-gradient(to left, #c5daff 0%, #e0e0e0 100%);
     color: #333;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    overflow-x: hidden; /* Ensures no horizontal scroll from the blur effect */
+    overflow-x: hidden;
 }
 
 * {
-    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
-    
-    
-    
-  }
-  
-  a{
+    box-sizing: border-box;
+}
+
+a {
     text-decoration: none;
-  }
-  
-  nav {
-    background-color: #34495e; /* Dark navy color */
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #34495e;
     padding: 10px 30px;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1000; /* Ensures the nav is always on top */
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-links {
+    list-style: none;
     display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-nav ul li {
+.nav-links li {
     margin-left: 30px;
 }
 
-nav ul li a {
-    text-decoration: none;
+.nav-links li a {
     color: #e0e0e0;
     font-size: 20px;
     transition: all 0.3s ease-in-out;
 }
 
-nav ul li a:hover {
-    cursor: pointer;
+.nav-links li a:hover {
     color: white;
     background-color: #2c3e50;
     padding: 4px 10px;
@@ -61,82 +54,164 @@ nav ul li a:hover {
 }
 
 .home-link a {
-    font-weight: bold; /* Make the home link more prominent */
-    color: #ffffff; /* Brighter color for visibility */
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Hamburger Icon Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: white !important; /* Force the color to be white */
+    background: none;
+    border: none;
+}
+
+/* Responsive Styles for Tablet and Mobile */
+
+/* Tablet View (768px and below) */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        background-color: #34495e;
+        display: none;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nav-links li a {
+        padding: 10px;
+        width: 100%;
+    }
+}
+
+/* Mobile View (480px and below) */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+
+    nav {
+        padding: 5px 10px;
+    }
+
+    .nav-links.show {
+        top: 40px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links li a {
+        font-size: 18px;
+    }
+
+    .home-link a {
+        font-size: 16px;
+    }
+
+    .hamburger {
+        color: #ffffff !important; /* Ensure white color for the icon */
+    }
 }
 
 
-    .hero {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 350px;
-        top:120px;
-        overflow: hidden; /* Ensures nothing spills outside the section */
-        position: relative; /* Allows absolute positioning inside */
+
+/* Hero Section for Desktop/Laptop */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    top: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero img {
+    position: absolute;
+    left: 220px;
+    width: 250px;
+    top: 50px;
+    border-radius: 700px;
+    animation: slideInFromLeft 2s forwards;
+}
+
+.hero .hero_text {
+    position: absolute;
+    right: 40px;
+    font-size: 20px;
+    animation: slideInFromRight 2s forwards;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-130%);
     }
-    
-    .hero img {
-        position: absolute;
-        left: 220px;
-        width: 250px;
-        top : 50px;
-border-radius: 700px;
-        animation: slideInFromLeft 2s forwards; /* Animation for the image */
+    100% {
+        transform: translateX(0);
     }
-    
-    .hero .hero_text {
-        position: absolute;
-        right: 40px;
-        font-size: 20px;
-        animation: slideInFromRight 2s forwards; /* Animation for the text */
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(80%);
     }
-    
-    @keyframes slideInFromLeft {
-        0% {
-            transform: translateX(-130%);
-        }
-        100% {
-            transform: translateX(0);
-        }
+    100% {
+        transform: translateX(0);
     }
-    
-    @keyframes slideInFromRight {
-        0% {
-            transform: translateX(80%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-    
-    .social-icons a {
-        color: black; /* Icon color matching the button */
-        font-size: 22px; /* Increase the size of the icons */
-        margin: 5px; /* Space between icons */
-        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition for hover effects */
-    }
-    
-    .social-icons a:hover {
-        color: #00d2ff; /* A darker shade of blue for hover */
-        padding: 9px;
-    }
-    
+}
+
+.social-icons a {
+    color: black;
+    font-size: 22px;
+    margin: 5px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #00d2ff;
+    padding: 9px;
+}
 
 .hero button {
-    background-color: #04b18e; /* Matching blue with nav bar gradient */
-    color: rgb(17, 235, 64); /* White text for contrast */
-    border: none; /* No border for a cleaner look */
-    padding: 14px 20px; /* Sufficient padding for usability */
-    font-size: 18px; /* Visible font size */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #04b18e;
+    color: rgb(17, 235, 64);
+    border: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    border-radius: 5px;
     margin-top: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s;
 }
+
 .hero button:hover {
-    background-color: #00d2ff; /* Lighter blue on hover */
-    color: #222; /* Darker text on hover */
+    background-color: #00d2ff;
+    color: #222;
     padding: 10px;
     cursor: pointer;
 }
@@ -157,45 +232,131 @@ border-radius: 700px;
     }
 }
 
+/* Responsive Styles */
+
+/* Tablet View (768px and below) */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding-top: 50px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero img {
+        position: static;
+        width: 180px;
+        margin: 20px 0;
+    }
+
+    .hero .hero_text {
+        position: static;
+        font-size: 18px;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero h4 {
+        font-size: 16px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+    }
+
+    .hero button {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+}
+
+/* Mobile View (480px and below) */
+@media (max-width: 480px) {
+    .hero {
+        flex-direction: column;
+        height: auto;
+        padding-top: 50px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero img {
+        position: static;
+        width: 300px;
+        height: 550px;
+        margin: 7px 0;
+    }
+
+    .hero .hero_text {
+        position: static;
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    .hero h1 {
+        font-size: 20px;
+    }
+
+    .hero h4 {
+        font-size: 14px;
+    }
+
+    .social-icons a {
+        font-size: 18px;
+    }
+
+    .hero button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
 
 
+
+/* About Section */
 .about {
-    background: linear-gradient(to right, #dae0e5, #f0f2f6); /* A more subdued gradient that complements the main gradient */
-    color: #333;  /* Maintains readability */
-    padding: 50px 40px;  /* Ample padding for a more spacious layout */
-    font-family: 'Arial', sans-serif;  /* Clean, modern font */
-    line-height: 1.8;  /* Enhanced line spacing for readability */
-    max-width: 1000px;  /* Optimal width for readability */
-    margin: 230px auto;  /* Adds vertical spacing and centers the section */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);  /* Subtle shadow for depth */
-    border-radius: 15px; /* Soft rounded corners */
-    border: 1px solid #cfd8dc; /* Light border to subtly frame the section */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Smooth transitions for interactive effects */
+    background: linear-gradient(to right, #dae0e5, #f0f2f6);
+    color: #333;
+    padding: 0px 40px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    max-width: 1000px;
+    margin: 30px auto;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    border: 1px solid #cfd8dc;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 .about:hover {
-    transform: translateY(-10px);  /* Gentle lift effect on hover */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);  /* Increased shadow for a popping effect */
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .about h1 {
-    color: #007bff;  /* Continues the theme color for headings */
-    font-size: 36px;  /* Large font size for prominence */
-    margin-bottom: 20px;  /* Adequate spacing below heading */
-    text-align: center;  /* Center alignment for focus */
+    color: #007bff;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .about h4 {
-    font-size: 18px;  /* Proper font size for secondary text */
-    margin-top: 0;  /* Reduces space to maintain compactness */
-    text-align: justify;  /* Justified text for clean alignment */
-    opacity: 0.85;  /* Slightly subdued text for softer appearance */
+    font-size: 18px;
+    margin-top: 0;
+    text-align: justify;
+    opacity: 0.85;
 }
+
 .about h1, .about h4 {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease-out forwards;
-    animation-delay: 0.3s; /* Delays the animation to enhance visibility as the user focuses */
+    animation-delay: 0.3s;
 }
 
 @keyframes fadeInUp {
@@ -209,19 +370,12 @@ border-radius: 700px;
     }
 }
 
-
-
-.skills-section {
-    padding-top:-580px; /* Reduced from a larger value */
-}
-
 /* Skills Section */
 .skills-section {
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: -220px;
-
+    margin-top: -40px;
 }
 
 .skills-section h2 {
@@ -233,14 +387,12 @@ border-radius: 700px;
     letter-spacing: 1px;
 }
 
-/* Card Grid */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-/* Individual Skill Card */
 .skill-card {
     background-color: #f0f2f6;
     padding: 30px;
@@ -292,38 +444,114 @@ border-radius: 700px;
     left: -30%;
 }
 
-/* Media Queries for Smaller Screens */
+/* Responsive Media Queries */
+
+/* Tablet View (768px and below) */
 @media (max-width: 768px) {
+    .about {
+        padding: 30px 20px;
+        margin: 100px auto;
+        max-width: 90%;
+    }
+
+    .about h1 {
+        font-size: 28px;
+    }
+
+    .about h4 {
+        font-size: 16px;
+    }
+
+    .skills-section {
+        padding: 40px 10px;
+    }
+
+    .skills-section h2 {
+        font-size: 28px;
+    }
+
     .skills-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .skill-card {
+        padding: 20px;
+    }
+
+    .skill-card h3 {
+        font-size: 20px;
+    }
+
+    .skill-card .skill-list li {
+        font-size: 14px;
+    }
+}
+
+/* Mobile View (480px and below) */
+@media (max-width: 480px) {
+    .about {
+        padding: 20px 15px;
+        margin: 150px auto;
+        max-width: 100%;
+    }
+
+    .about h1 {
+        font-size: 24px;
+    }
+
+    .about h4 {
+        font-size: 14px;
+    }
+
+    .skills-section {
+        padding: 0px 5px;
+    }
+
+    .skills-section h2 {
+        font-size: 24px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: auto;
+    }
+
+    .skill-card h3 {
+        font-size: 18px;
+    }
+
+    .skill-card .skill-list li {
+        font-size: 12px;
     }
 }
 
 
-
-
+/* Experience Section */
 .experience {
-    background-color: #f8faff; /* Matches the modern aesthetic of the rest of the portfolio */
+    background-color: #f8faff;
     color: #333;
     padding: 40px;
-    margin: 40px auto; /* Centers the box and manages vertical spacing */
+    margin: 40px auto;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1000px; /* Limits the width and creates a boxed layout */
-    border: 1px solid #cfd8dc; /* Light border to frame the section */
+    max-width: 1000px;
+    border: 1px solid #cfd8dc;
 }
 
 .experience h2 {
     font-size: 30px;
     color: #007bff;
     margin-bottom: 20px;
-    text-align: center; /* Centers the heading for a more cohesive look */
+    text-align: center;
 }
 
 .job h3 {
     font-size: 24px;
     margin-top: 10px;
-    text-align: left; /* Ensures text alignment is consistent within the content box */
+    text-align: left;
 }
 
 .job-details {
@@ -333,27 +561,27 @@ border-radius: 700px;
 }
 
 .job ul {
-    list-style-type: none; /* Removes default bullet points */
+    list-style-type: none;
     padding: 0;
 }
 
 .job li {
-    background-color: #e6f1ff; /* Solid light blue background */
+    background-color: #e6f1ff;
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .job li:before {
     content: "• ";
-    color: #007bff; /* Theme blue for bullet points */
-    font-size: 20px; /* Adjusted size for visibility */
+    color: #007bff;
+    font-size: 20px;
     vertical-align: middle;
-    padding-right: 10px; /* Space after bullet point */
+    padding-right: 10px;
 }
 
-/* Projects Section Styling */
+/* Projects Section */
 .projects-section {
     padding: 60px 20px;
     max-width: 1200px;
@@ -369,14 +597,12 @@ border-radius: 700px;
     letter-spacing: 1px;
 }
 
-/* Projects Container */
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
 }
 
-/* Project Card Styling */
 .project-card {
     background-color: #f0f8ff;
     padding: 30px;
@@ -419,23 +645,15 @@ border-radius: 700px;
     transform: translateY(-3px);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .projects-container {
-        grid-template-columns: 1fr; /* Single column layout on small screens */
-    }
-}
-
-
-
+/* Education Section */
 .education {
-    background-color: #f8faff; /* Light blue background for section */
+    background-color: #f8faff;
     color: #333;
     padding: 40px;
-    margin: 40px auto; /* Centers the box and adds vertical spacing */
+    margin: 40px auto;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1000px; /* Box layout */
+    max-width: 1000px;
     border: 1px solid #cfd8dc;
 }
 
@@ -446,7 +664,6 @@ border-radius: 700px;
     text-align: center;
 }
 
-/* Education Details Styling */
 .education-details h3 {
     font-size: 24px;
     color: #007bff;
@@ -464,137 +681,15 @@ border-radius: 700px;
     margin-bottom: 10px;
 }
 
-/* Certifications Section */
-.certifications h3 {
-    font-size: 24px;
-    color: #007bff;
-    margin-top: 30px;
-}
-
-.certifications ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.certifications li {
-    background-color: #e6f1ff; /* Solid light blue background */
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-}
-
-.certifications li:before {
-    content: "• ";
-    color: #007bff; /* Theme blue bullet point */
-    font-size: 20px;
-    vertical-align: middle;
-    padding-right: 10px;
-}
-
-
-
-.contact-section {
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #f8faff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.contact-section h2 {
-    font-size: 30px;
-    color: #007bff;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-}
-
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.contact-details p {
-    font-size: 18px;
-    color: #333;
-    margin: 5px 0;
-}
-
-.contact-details a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-details a:hover {
-    color: #0056b3;
-}
-
-/* Social Media Buttons */
-.social-media {
-    display: flex;
-    gap: 20px;
-}
-
-.social-button {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.linkedin {
-    background-color: #0077b5; /* LinkedIn blue */
-    color: white;
-}
-
-.github {
-    background-color: #333; /* GitHub dark */
-    color: white;
-}
-
-.social-button:hover {
-    transform: translateY(-2px); /* Slight lift effect on hover */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.linkedin:hover {
-    background-color: #005f87;
-}
-
-.github:hover {
-    background-color: #222;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column;
-    }
-
-    .social-media {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
-
 /* Contact Section */
 .contact-section {
     padding: 60px 20px;
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+    background-color: #f8faff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-section h2 {
@@ -605,7 +700,6 @@ border-radius: 700px;
     letter-spacing: 1px;
 }
 
-/* Contact Card */
 .contact-card {
     background: linear-gradient(to right, #e6f1ff, #f0f8ff);
     padding: 40px;
@@ -622,7 +716,6 @@ border-radius: 700px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Contact Information */
 .contact-info {
     margin-bottom: 30px;
 }
@@ -651,7 +744,6 @@ border-radius: 700px;
     color: #0056b3;
 }
 
-/* Call-to-action */
 .cta {
     font-size: 16px;
     color: #555;
@@ -659,7 +751,6 @@ border-radius: 700px;
     font-style: italic;
 }
 
-/* Social Media Links */
 .social-media {
     display: flex;
     gap: 20px;
@@ -683,7 +774,6 @@ border-radius: 700px;
     font-size: 20px;
 }
 
-/* LinkedIn Button */
 .linkedin {
     background-color: #0077b5;
 }
@@ -693,7 +783,6 @@ border-radius: 700px;
     transform: translateY(-3px);
 }
 
-/* GitHub Button */
 .github {
     background-color: #333;
 }
@@ -703,13 +792,119 @@ border-radius: 700px;
     transform: translateY(-3px);
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
+
+/* Tablet View (768px and below) */
 @media (max-width: 768px) {
-    .social-media {
-        flex-direction: column;
-        gap: 15px;
+    .experience {
+        padding: 30px 20px;
+        margin: 20px auto;
+        max-width: 90%;
+    }
+
+    .projects-section {
+        padding: 40px 10px;
+    }
+
+    .projects-section h2 {
+        font-size: 28px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .education {
+        padding: 30px 20px;
+    }
+
+    .contact-section {
+        padding: 40px 20px;
+    }
+}
+
+/* Mobile View (480px and below) */
+@media (max-width: 480px) {
+    .experience {
+        padding: 20px 10px;
+        margin: 15px auto;
+        max-width: 100%;
+    }
+
+    .projects-section {
+        padding: 30px 5px;
+    }
+
+    .projects-section h2 {
+        font-size: 24px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .education {
+        padding: 20px 10px;
+    }
+
+    .contact-section {
+        padding: 30px 10px;
     }
 }
 
 
+/* Certifications Section */
+.certifications {
+    background-color: #e6f1ff; /* Light blue background */
+    padding: 20px; /* Padding around the content */
+    margin-bottom: 20px; /* Space below the section */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
 
+.certifications h3 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 15px; /* Space below the heading */
+}
+
+.certifications ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.certifications li {
+    background-color: #f0f8ff; /* Even lighter blue background for list items */
+    padding: 10px 15px; /* Padding inside each list item */
+    margin-bottom: 8px; /* Space between list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    position: relative; /* Needed for custom bullet positioning */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Soft shadow for each list item */
+    font-size: 16px; /* Font size for list content */
+}
+
+.certifications li:before {
+    content: "•"; /* Custom bullet symbol */
+    color: #007bff; /* Blue color to match the theme */
+    font-size: 20px; /* Larger bullet size */
+    position: absolute; /* Position absolutely within the li */
+    left: -10px; /* Position before the start of the text */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center correctly */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .certifications {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .certifications li {
+        padding: 8px 12px;
+    }
+
+    .certifications li:before {
+        left: -8px; /* Adjust position slightly for smaller screens */
+    }
+}
