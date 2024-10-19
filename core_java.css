@@ -5,20 +5,24 @@ body {
     margin: 0;
     padding: 0;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
 .intro {
     text-align: center;
     padding: 20px;
+    background-color: rgb(46, 46, 53);
+    color:white;
 }
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    grid-template-columns: repeat(2, 1fr); /* Two columns in default state */
     gap: 20px;
     padding: 20px;
+    margin: auto; /* Ensure it's centered and respects the screen's padding */
 }
 
 .project-card {
@@ -51,70 +55,68 @@ a{
     padding: 10px 15px;
     background: #007bff;
     color: white;
-    text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.project-card button:hover, .project-card a:hover {
+.project-card a:hover, .project-card button:hover {
     background-color: #0056b3;
 }
 
-.video-section {
-    text-align: center;
-    margin-top: 30px;
+
+#videoPlayer{
+
+    width: auto;
+    height: 315px;
+    align-items: center;
+
+
 
 }
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr; /* Switch to single column for smaller screens */
+    }
 
-iframe {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    .project-card {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .project-card h3, .project-card p {
+        font-size: 14px; /* Reduce font size to prevent overflow */
+    }
+
+    .intro, .footer {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    body, html {
+        padding: 0;
+        margin: 0; /* Ensure there are no default browser paddings/margins affecting the layout */
+    }
 }
 
+#videoPlayer{
+
+    width: 380px;
+    height: 505px;
+    padding: 10px;
 
 
-.intro, .footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #007bff;
-    color: white;
+
 }
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-}
-
-.project-card {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-card h3, .project-card p {
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-}
-
-
 
 .footer {
     margin-top: 20px;
     padding: 20px;
     background-color: #333;
-    color: #fff;
+    color: white;
+    text-align: center;
 }
 
 .footer a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px; /* Adjusted font size for better visibility on small screens */
 }
